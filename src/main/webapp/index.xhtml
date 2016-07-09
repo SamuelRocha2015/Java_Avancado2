@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Locadora Virtual | Categorias</title>
     </h:head>
-    <h1>Nova Categoria</h1> 
     <h:body>
+        <h:form>
+            <p:menubar>
+                <p:submenu label="Cadastros">
+                    <p:menuitem value="Filme" action="filme" />
+                    <p:menuitem value="Categoria" action="categoria" />
+                </p:submenu>
+            </p:menubar>
+        </h:form>
+        <h1>Nova Categoria</h1> 
+
+
         <h:form>
             <fieldset>
                 <legend>Cadastro</legend>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="Categoria:" for="categoria"/>
-                    <h:inputText id="categoria" value="#{categoriaMB.categoria.nome}"/>
-                    <h:commandButton value="Gravar" action="#{categoriaMB.salvar}"/>
+                    <p:outputLabel value="Categoria:" for="categoria"/>
+                    <p:inputText id="categoria" value="#{categoriaMB.categoria.nome}"/>
+                    <p:commandButton value="Gravar" action="#{categoriaMB.salvar}"/>
                 </h:panelGrid>
             </fieldset>
         </h:form>
