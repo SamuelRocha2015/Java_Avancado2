@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"    >
+    <h:head>
+        <title>Locadora Virtual | Filmes</title>
+    </h:head>
+     <h:body>
+        <h:form>
+        <p:menubar>
+            <p:submenu label="Cadastros">
+                <p:menuitem value="Filme" url="filme.xhtml" />
+                <p:menuitem value="Categoria" url="index.xhtml" />
+            </p:submenu>
+        </p:menubar>
+    </h:form>
+    <h1>Novo Filme</h1> 
+   
+        <h:form>
+            <fieldset>
+                <legend>Cadastro</legend>
+                <h:panelGrid columns="2">
+                    <p:outputLabel value="Titulo" for="titulo"/>
+                    <p:inputText id="titulo" value="#{filmeMB.filme.titulo}"/>
+                    <p:outputLabel value="Sinopse" for="sinopse"/>
+                    <p:inputTextarea cols="50" id="sinopse" value="#{filmeMB.filme.sinopse}"/>
+                    
+                    <p:outputLabel value="Categoria" for="cat"/>
+                    <p:selectOneMenu id="cat" value="#{filmeMB.idCategoria}">
+                        <f:selectItems value="#{filmeMB.categorias}"  var="categoria"
+                                       itemLabel="#{categoria.nome}" 
+                                       itemValue="#{categoria.id}" />
+                        
+                    </p:selectOneMenu>
+                    <p:commandButton value="Gravar" action="#{filmeMB.salvar}"/>
+                </h:panelGrid>
+            </fieldset>
+        </h:form>
+    
+    <br /><br />
+        <p:dataTable var="filme" value="#{filmeMB.filmes}" >
+            <p:column headerText="Filme" style="width:250px" >
+                <h:outputText value="#{filme.titulo}" />
+            </p:column>            
+            
+            <p:column headerText="Sinopse" >
+                <h:outputText value="#{filme.sinopse}" />
+            </p:column>
+            
+        </p:dataTable>
+
+
+    </h:body>
+</html>
+
+
+
